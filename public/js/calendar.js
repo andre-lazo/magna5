@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
     var calendarEl = document.getElementById('calendar');
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        
         //PARA QUE EL CALENDARIO INICIE EN UNA FECHA ELEGIDA
       defaultDate: new Date(2020,10,16), 
       Array, default: [],
       hiddenDays: [1],
       plugins: [ 'dayGrid', 'interaction', 'timeGrid', 'list' ],
-      //ESTO ES PARA MOSTRAR LA VISTA SEGUN POR SEMANA, MES O POR DIA
-      /*defaultView: 'timeGridWeek'*/
       header:{
           left: 'prev, next today',
           center: 'title',
@@ -17,16 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       //ESTO ES PARA CUANDO HAGAS CLICK ES UNA FECHA SE PRESENTE UN MODAL
       dateClick:function(info){
-          limpiarFormulario();
+          
           //ASIGNAMOS AL CAMPO FECHA EL VALOR DE FECHA OBTENIDO MEDIANTE dateStr
           $('#txtFecha').val(info.dateStr);
 
 
-          //ESTO ES PARA DESACTIVAR LOS BOTONES MENOS EL DE AGREGAR   
-          $("#horarios").show();
-         
-          $('#Agregar').show();
-          
         //VALIDAR FECHA
             //FECHA 1
             var fec1 = document.getElementById("txtFecha").value;	
@@ -43,20 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }else{
                 alert('Por favor seleccionar una fecha actual o mayor.');
             }
- 
       },
       
       eventClick:function(info){
 
-          $("#horarios").hide();
-        
-        
-          
-          
-          
-          
-          $('#txtId').val(info.event.id);
-          $('#txtTitulo').val(info.event.title);
           
           //RECUPERAMOS INFORMACION DE FECHA Y HORA
           mes= (info.event.start.getMonth()+1);
@@ -74,10 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
           horario= (hora+":"+minutos);
 
-         
-
-          $('#exampleModal').modal();
-
       },
       
       //AQUI MANDAMOS LA URL DE EVENTOS PARA QUE SE VEA EL EVENTO GUARDADO EN LA BASE DE DATOS
@@ -87,8 +65,5 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.setOption('locale','Es');
     calendar.render();
     
-
-    
-    
   });
-  
+ 
