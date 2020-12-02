@@ -16,7 +16,7 @@
        
         var url_show="{{url('/eventos/show')}}"; 
     </script>
-    <script src="{{asset('js/funciones.js')}}" defer></script>
+    <script src="{{asset('js/calendar.js')}}" defer></script>
  
 @endsection
 
